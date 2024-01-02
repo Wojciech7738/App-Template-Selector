@@ -10,9 +10,7 @@ OBJDIR = obj
 BINARY = main
 
 # Source files
-# MAINFILE = $(SRCDIR)/main.cpp
 SRCS = $(wildcard $(SRCDIR)/*.cpp) $(wildcard $(SRCDIR)/**/*.cpp)
-# INCS = $(foreach D, $(wildcard $(INCDIR)/**/*.h), -I$(D))
 OBJS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRCS))
 
 # Create the 'obj' directory
@@ -27,9 +25,6 @@ $(BINARY): $(OBJS)
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -I$(INCDIR) $(DEPFLAGS) $(OPT) -c -o $@ $<
-
-# Include dependency files
--include $(OBJS:.o=.d)
 
 .PHONY: all clean
 
