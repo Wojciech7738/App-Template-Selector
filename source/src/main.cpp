@@ -1,10 +1,12 @@
 #include "../mainwindow.h"
 
 #if RUN_TESTS
-#include "test/tst_directoryexiststest.cpp"
+#include "tst_directoryexiststest.h"
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {
+    QApplication app(argc, argv);
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

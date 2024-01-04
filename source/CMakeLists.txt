@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(GTest REQUIRED)
 
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -19,6 +20,7 @@ set(TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test)
 
 include_directories(${INCLUDE_DIR})
 include_directories(${LIBRARY_DIR})
+include_directories(${TEST_DIR})
 
 # The rest of the project
 set(PROJECT_SOURCES
@@ -37,7 +39,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         libs/nlohmann_json/json.hpp libs/nlohmann_json/json_fwd.hpp
         include/Models/TemplateScanner.h src/Models/TemplateScanner.cpp
         include/Utils/macros.h
-        # test/tst_directoryexiststest.cpp
+        test/tst_directoryexiststest.h
+        include/Utils/pathvalidator.h src/Utils/pathvalidator.cpp
+        include/Utils/errormacros.h
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET App-Template-Selector APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -60,7 +64,8 @@ endif()
 add_compile_definitions(RUN_TESTS=false)
 enable_testing()
 
-target_link_libraries(App-Template-Selector PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(App-Template-Selector PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${GTEST_LIBRARIES})
+add_test(FileDirectoryExistenceTest App-Template-Selector)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

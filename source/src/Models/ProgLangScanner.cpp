@@ -20,26 +20,24 @@ void ProgLangScanner::write_to_json_file(const std::vector<std::string>& data) c
 
 }
 
-// bool ProgLangScanner::is_direcotry_valid(const std::string& directory)
-// {
-//     // TODO: Implement this method.
-//     return false;
-// }
-
-
 std::vector<std::string> ProgLangScanner::scan_directory(const std::string& directory) const
 {
     fs::path lang_path = m_project_path / directory;
     std::vector<std::string> languages;
-    // if (JsonReaderWriter::is_direcotry_valid(directory))
-    // {
-    //     // TODO: throw an exception
-    //     return languages;
-    // }
+    PathValidator path_validator;
+
+    if (!path_validator.validate_prog_lang_dir(lang_path.string()))
+    {
+        return languages;
+    }
     
     for (const auto& entry : fs::directory_iterator(lang_path))
     {
         languages.push_back(entry.path().filename().string());
+    }
+    // Given directory must contain subdirectories only
+    if (!path_validator.validate_prog_lang_dir_contents(lang_path, languages)) {
+        languages.clear();
     }
     return languages;
 }

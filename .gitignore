@@ -1,5 +1,7 @@
 CMakeLists.txt.user
 CMakeLists.txt.user.*
+Makefile
 build-*
 .vscode
 .git
+.gitignore

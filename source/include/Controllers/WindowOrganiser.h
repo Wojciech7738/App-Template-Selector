@@ -7,8 +7,11 @@
 #include <vector>
 #include <QApplication>
 #include <QVBoxLayout>
-#include "Views/LangSelectWindow.h"
 #include "../mainwindow.h"
+#include "Views/LangSelectWindow.h"
+#include "Models/IJsonReaderWriter.h"
+#include "Models/ReaderWriterFactory.h"
+#include "Utils/pathvalidator.h"
 
 
 class WindowOrganiser

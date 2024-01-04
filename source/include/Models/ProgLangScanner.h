@@ -6,6 +6,7 @@
 #include <filesystem>
 #include "json.hpp"
 #include "IJsonReaderWriter.h"
+#include "Utils/pathvalidator.h"
 
 namespace fs = std::filesystem;
 
@@ -20,7 +21,6 @@ public:
     std::vector<std::string> read_json_file() const override;
     void write_to_json_file(const std::vector<std::string>& data) const override;
     std::vector<std::string> scan_directory(const std::string& directory) const override;
-    // bool ProgLangScanner::is_direcotry_valid(const std::string& directory);
 };
 
 #endif
