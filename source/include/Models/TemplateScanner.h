@@ -5,7 +5,7 @@
 
 #include <filesystem>
 #include <tuple>
-#include "../../libs/nlohmann_json/json.hpp"
+#include "json.hpp"
 #include "IJsonReaderWriter.h"
 
 namespace fs = std::filesystem;

@@ -1,6 +1,6 @@
-#include "../../include/Controllers/WindowOrganiser.h"
-#include "../../include/Models/IJsonReaderWriter.h"
-#include "../../include/Models/ReaderWriterFactory.h"
+#include "Controllers/WindowOrganiser.h"
+#include "Models/IJsonReaderWriter.h"
+#include "Models/ReaderWriterFactory.h"
 
 WindowOrganiser::WindowOrganiser()
 {

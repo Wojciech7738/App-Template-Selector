@@ -5,8 +5,8 @@
 
 #include <memory>
 #include "IJsonReaderWriter.h"
-#include "../../include/Models/ProgLangScanner.h"
-#include "../../include/Models/TemplateScanner.h"
+#include "Models/ProgLangScanner.h"
+#include "Models/TemplateScanner.h"
 
 
 class ReaderWriterFactory

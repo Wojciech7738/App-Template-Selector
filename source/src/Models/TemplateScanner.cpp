@@ -1,4 +1,4 @@
-#include "../../include/Models/TemplateScanner.h"
+#include "Models/TemplateScanner.h"
 
 TemplateScanner::TemplateScanner(const std::string& file_name)
     : m_file_name(file_name + ".json")

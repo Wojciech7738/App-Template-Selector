@@ -1,4 +1,4 @@
-#include "../../include/Models/ReaderWriterFactory.h"
+#include "Models/ReaderWriterFactory.h"
 
 std::unique_ptr<IJsonReaderWriter<std::string>> ReaderWriterFactory::createJsonReaderWriter(const std::string& file_name)
 {

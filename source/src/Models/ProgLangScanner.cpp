@@ -1,4 +1,4 @@
-#include "../../include/Models/ProgLangScanner.h"
+#include "Models/ProgLangScanner.h"
 
 ProgLangScanner::ProgLangScanner(const std::string& file_name)
     : m_file_name(file_name + ".json")

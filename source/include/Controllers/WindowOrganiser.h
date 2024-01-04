@@ -7,8 +7,8 @@
 #include <vector>
 #include <QApplication>
 #include <QVBoxLayout>
-#include "../Views/LangSelectWindow.h"
-#include "../../mainwindow.h"
+#include "Views/LangSelectWindow.h"
+#include "../mainwindow.h"
 
 
 class WindowOrganiser

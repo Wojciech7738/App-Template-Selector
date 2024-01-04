@@ -1,6 +1,6 @@
 #include <QPushButton>
 #include <QVBoxLayout>
-#include "../../include/Views/LangSelectWindow.h"
+#include "Views/LangSelectWindow.h"
 
 // TODO: refactor the code in order to apply Factory pattern
 
