@@ -21,7 +21,6 @@ public:
     void write_to_json_file(const std::vector<std::string>& data) const override;
     std::vector<std::string> scan_directory(const std::string& directory) const override;
     // bool ProgLangScanner::is_direcotry_valid(const std::string& directory);
-
 };
 
 #endif

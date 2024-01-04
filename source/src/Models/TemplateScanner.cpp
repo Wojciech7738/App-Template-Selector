@@ -35,7 +35,7 @@ std::vector<std::tuple<std::string, std::vector<std::string>>> TemplateScanner::
         files.clear();
         dir_name = entry.path().filename().string();
         for (const auto& file_entry : fs::recursive_directory_iterator(entry.path())) {
-            files.push_back(file_entry.path().filename().string());
+            files.push_back(file_entry.path().string());
         }
         templates_files.push_back(std::make_tuple(dir_name, files));
     }
