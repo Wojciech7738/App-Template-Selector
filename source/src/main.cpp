@@ -1,4 +1,5 @@
 #include "../mainwindow.h"
+#include "Utils/globals.h"
 
 #if RUN_TESTS
 #include "tst_directoryexiststest.h"
@@ -15,7 +16,11 @@ int main(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
+    Argc = argc;
+    Argv = argv;
     WindowOrganiser w;
-    w.run(argc, argv);
+    if (w.scan_for_templates() == 0)
+        w.show_Gui();
+    // TODO: implement cases when files are empty
 }
 #endif
