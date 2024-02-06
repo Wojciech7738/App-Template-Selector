@@ -12,6 +12,7 @@
 #include "Models/IJsonReaderWriter.h"
 #include "Models/ReaderWriterFactory.h"
 #include "Utils/pathvalidator.h"
+#include "Utils/globals.h"
 
 
 class WindowOrganiser
@@ -19,10 +20,14 @@ class WindowOrganiser
 public:
     WindowOrganiser();
     ~WindowOrganiser();
-    void run(int argc, char** argv);
+    int scan_for_templates();
+    void show_Gui();
 private:
-    std::string show_lang_select_window(const std::string& window_name, const std::string& window_title, std::vector<std::string> languages, int argc, char** argv);
-    void show_main_window(const std::string& window_name, const std::string& window_title, int argc, char** argv, std::string selected_language, std::vector<std::tuple<std::string, std::vector<std::string>>> dir_contents);
+    std::vector<std::string> languages;
+    std::vector<std::tuple<std::string, std::vector<std::tuple<std::string, std::vector<std::string>>>>> languages_tree;
+    std::string show_lang_select_window(const std::string& window_name, const std::string& window_title, std::vector<std::string> languages);
+    void show_main_window(const std::string& window_name, const std::string& window_title, std::string selected_language, std::vector<std::tuple<std::string, std::vector<std::string>>> dir_contents);
+    std::vector<std::tuple<std::string, std::vector<std::string>>> get_dir_contents(const std::string& lang);
 };
 
 #endif

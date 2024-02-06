@@ -42,6 +42,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         test/tst_directoryexiststest.h
         include/Utils/pathvalidator.h src/Utils/pathvalidator.cpp
         include/Utils/errormacros.h
+        include/Utils/globals.h src/Utils/globals.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET App-Template-Selector APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

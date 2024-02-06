@@ -1,11 +1,15 @@
 #include "Utils/pathvalidator.h"
+#include "Utils/globals.h"
 
-void PathValidator::display_error_message(std::string message_string) {
+void pathValidator::display_error_message(std::string message_string) {
+    QApplication a(Argc, Argv);
+    QWidget w;
     QString error_message = QString::fromStdString(message_string);
-    QMessageBox::critical(nullptr, "Error", error_message);
+    QMessageBox::critical(&w, "Error", error_message);
+    a.exit(0);
 }
 
-bool PathValidator::validate_prog_lang_dir(std::string directory) {
+bool pathValidator::validate_prog_lang_dir(std::string directory) {
     QFileInfo fileInfo(QString::fromStdString(directory));
     if (!fileInfo.exists()) {
         display_error_message(ERR_DIR_NOT_EXISTS(directory));
@@ -14,7 +18,7 @@ bool PathValidator::validate_prog_lang_dir(std::string directory) {
     return true;
 }
 
-bool PathValidator::validate_prog_lang_dir_contents(std::string directory, std::vector<std::string> langs) {
+bool pathValidator::validate_prog_lang_dir_contents(std::string directory, std::vector<std::string> langs) {
     for (const auto& filename : langs) {
         std::string path = directory + PATH_SEP + filename;
         if (fs::exists(path) && fs::is_regular_file(path)) {
@@ -23,4 +27,9 @@ bool PathValidator::validate_prog_lang_dir_contents(std::string directory, std::
         }
     }
     return true;
+}
+
+// Checks if filepath for .json configuration file exists.
+bool pathValidator::configuration_file_exists() {
+    return fs::exists(CONFIG_PATH + ".json") && fs::exists(CONFIG_PATH + "_only.json");
 }
